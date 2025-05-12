@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaTachometerAlt, FaUser, FaQuestionCircle, FaChartPie, FaClipboardList, FaUserFriends } from "react-icons/fa";
-
+import logo from "../images/assets/logos.gif";
 export default function Sidebar() {
   return (
-    <aside className="h-screen w-52 bg-gray-100 p-4 flex flex-col gap-6 text-blue-600">
+    <aside className="h-screen w-80 bg-gray-100 p-4 flex flex-col gap-6 text-blue-600">
       <div className="flex items-center gap-2">
-        <img src="/logo.png" alt="PSE Logo" className="h-10" />
-        <div className="text-sm font-bold">
-          <p>PSE INSTITUTE</p>
-          <p className="text-xs text-gray-600">School of Hospitality and Tourism</p>
-        </div>
+        <img src={logo} alt="PSE Logo" className="h-50" />
       </div>
 
       <nav className="flex flex-col gap-4 mt-6">
