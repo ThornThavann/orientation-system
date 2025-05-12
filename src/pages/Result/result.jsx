@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 
-function Overview() {
+function Result() {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar on the left */}
@@ -65,4 +65,4 @@ function Overview() {
   );
 }
 
-export default Overview;
+export default Result;
