@@ -9,7 +9,7 @@ import Question from './pages/Question/question.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/home" element={<Overview />} />  
+      <Route path="/Overview" element={<Overview />} />  
       <Route path="/" element={<Question />} />  
 
       
