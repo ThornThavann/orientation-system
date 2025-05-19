@@ -8,7 +8,10 @@ import Question from './pages/Question/question.jsx';
 import ViewQuestion from './pages/ViewQuestion/viewquestio.jsx';
 import CreateQuestion from './pages/CreateQuestion/createquestion.jsx';
 import UpdateQuestion from './pages/UpdateQuestion/updatequestion.jsx';
-
+import Skill from './pages/Skill/skill.jsx';
+import ViewSkill from './pages/ViewSkill/viewskill.jsx';
+import UpdateSkill from './pages/UpdateSkill/updateskill.jsx';
+import CreateSkill from './pages/CreateSkill/createskill.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -18,6 +21,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/viewquestion" element={<ViewQuestion />} />  
       <Route path="/createquestion" element={<CreateQuestion />} />  
       <Route path="/updatequestion" element={<UpdateQuestion />} />  
+      <Route path="/skill" element={<Skill />} />  
+      <Route path="/viewskill" element={<ViewSkill />} />  
+      <Route path="/updateskill" element={<UpdateSkill />} /> 
+       <Route path="/createskill" element={<CreateSkill />} /> 
+
+
+
+
 
 
 
