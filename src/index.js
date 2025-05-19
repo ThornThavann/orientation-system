@@ -1,5 +1,4 @@
 // index.js
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
@@ -12,6 +11,10 @@ import Skill from './pages/Skill/skill.jsx';
 import ViewSkill from './pages/ViewSkill/viewskill.jsx';
 import UpdateSkill from './pages/UpdateSkill/updateskill.jsx';
 import CreateSkill from './pages/CreateSkill/createskill.jsx';
+import Member from './pages/Member/member.jsx';
+import CreateMember from './pages/Member/createmember.jsx';
+import DeleteMember from './pages/Member/deletemember.jsx';
+import ViewMember from './pages/Member/viewmember.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -24,16 +27,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/skill" element={<Skill />} />  
       <Route path="/viewskill" element={<ViewSkill />} />  
       <Route path="/updateskill" element={<UpdateSkill />} /> 
-       <Route path="/createskill" element={<CreateSkill />} /> 
+      <Route path="/createskill" element={<CreateSkill />} /> 
+        <Route path="/member" element={<Member />} />
+      <Route path="/createmember" element={<CreateMember />} />
+      <Route path="/member" element={<Member />} />
+      <Route path="/deletemember" element={<DeleteMember />} />
+      <Route path="/viewmember" element={<ViewMember />} />
 
 
 
 
-
-
-
-
-      
     </Routes>
   </BrowserRouter>
 );
