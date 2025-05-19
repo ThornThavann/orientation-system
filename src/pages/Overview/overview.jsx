@@ -1,68 +1,108 @@
 import { Link } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
+import Button from "../../components/Button";
+import TableHeader from "../../components/TableHeader";
+import Header from "../../components/Header";
+import Buttons from "../../components/ButtonAction";
+import { FaUser } from "react-icons/fa";
+import SearchForm from "../../components/Search";
 
-function Overview() {
+export default function Overview() {
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar on the left */}
       <Sidebar />
+      <div className="flex-1 container mx-auto">
+        <Header />
+        <div className="flex-1 container mx-auto p-[50px]">
+          <div className="flex items-center justify-between mb-5">
+          <h1 className="text-2xl font-semibold mb-5 flex items-center space-x-2 text-indigo-600">
+            <FaUser />
+            <span className="py-4 ">Overview</span>
+          </h1> 
+          <SearchForm/>
+          </div>
 
-      {/* Main content on the right */}
-      <div className="flex-1 container mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-4">Book Catalog</h1>
+          <div className="mb-5 justify-between flex">
+            <Link to="/">
+              <Button name="Export" />
+            </Link>
 
-        <Link to="/book-catalog/new">
-          <button className="bg-blue-500 text-white px-6 py-2 mb-4 rounded-lg">
-            Create
-          </button>
-        </Link>
+            <Link to="/">
+              <Button name="View by Date" />
+            </Link>
+          </div>
 
-        <div className="overflow-hidden rounded-lg border border-gray-800 mt-4">
-          <table className="min-w-full bg-white">
-            <thead className="bg-gray-300 text-black">
-              <tr className="border-b border-gray-800">
-                <th className="px-7 py-5 text-left">Action</th>
-                <th className="px-7 py-5 text-left">ISBN</th>
-                <th className="px-7 py-5 text-left">Title</th>
-                <th className="px-7 py-5 text-left">Authors</th>
-                <th className="px-7 py-5 text-left">Publisher</th>
-                <th className="px-7 py-5 text-left">Genre</th>
-                <th className="px-7 py-5 text-left">Shelf Location</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-800 hover:bg-gray-100">
-                <td className="px-7 py-5">
-                  <button className="bg-blue-400 text-white py-1 px-3 rounded hover:bg-blue-500">
-                    View
-                  </button>
-                </td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-              </tr>
-              <tr className="border-b border-gray-800 hover:bg-gray-100">
-                <td className="px-7 py-5">
-                  <button className="bg-blue-400 text-white py-1 px-3 rounded hover:bg-blue-500">
-                    View
-                  </button>
-                </td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-                <td className="px-7 py-5">---</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className=" overflow-hidden rounded-lg border border-gray-800 ">
+            <table className="min-w-full bg-white ">
+              <thead className="bg-gray-300 text-black">
+                <tr className="border-b border-gray-800">
+                  <TableHeader name="Action" />
+                  <TableHeader name="Name" />
+                  <TableHeader name="School" />
+                  <TableHeader name="Grand" />
+                  <TableHeader name="Skill" />
+                  <TableHeader name="Year" />
+                  <TableHeader name="Gender" />
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-800 hover:bg-gray-100">
+                  <td className="px-7 py-5">
+                    <Link to="/viewoverview">
+                      <Buttons />
+                    </Link>
+                  </td>
+                  <td className="px-7 py-5">Khon sreyvorleak</td>
+                  <td className="px-7 py-5">Outside</td>
+                  <td className="px-7 py-5">12</td>
+                  <td className="px-7 py-5">WMAD</td>
+                  <td className="px-7 py-5">2025</td>
+                  <td className="px-7 py-5">F</td>
+                </tr>
+                <tr className="border-b border-gray-800 hover:bg-gray-100">
+                  <td className="px-7 py-5">
+                    <Link to="/viewoverview">
+                      <Buttons />
+                    </Link>
+                  </td>
+                  <td className="px-7 py-5">Khon sreyvorleak</td>
+                  <td className="px-7 py-5">Outside</td>
+                  <td className="px-7 py-5">12</td>
+                  <td className="px-7 py-5">WMAD</td>
+                  <td className="px-7 py-5">2025</td>
+                  <td className="px-7 py-5">F</td>
+                </tr>
+                <tr className="border-b border-gray-800 hover:bg-gray-100">
+                  <td className="px-7 py-5">
+                    <Link to="/viewoverview">
+                      <Buttons />
+                    </Link>
+                  </td>
+                  <td className="px-7 py-5">Khon sreyvorleak</td>
+                  <td className="px-7 py-5">Outside</td>
+                  <td className="px-7 py-5">12</td>
+                  <td className="px-7 py-5">WMAD</td>
+                  <td className="px-7 py-5">2025</td>
+                  <td className="px-7 py-5">F</td>
+                </tr>
+                <tr className="border-b  hover:bg-gray-100">
+                  <td className="px-7 py-5">
+                    <Link to="/viewoverview">
+                      <Buttons />
+                    </Link>
+                  </td>
+                  <td className="px-7 py-5">Khon sreyvorleak</td>
+                  <td className="px-7 py-5">Outside</td>
+                  <td className="px-7 py-5">12</td>
+                  <td className="px-7 py-5">WMAD</td>
+                  <td className="px-7 py-5">2025</td>
+                  <td className="px-7 py-5">F</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default Overview;

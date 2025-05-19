@@ -8,54 +8,50 @@ import Header from "../../components/Header";
 
 export default function Skill() {
   return (
-    
     <div className="flex min-h-screen">
-      
       <Sidebar />
-      {/* Main content */}
-    
       <div className="flex-1 container mx-auto">
-       <Header />
-       
-        <h1 className="text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
-          <FaClipboardList />
-          <span className="py-4 ">Skill</span>
-        </h1>
+        <Header />
+        <div className="flex-1 container mx-auto p-[50px]">
+          <h1 className="text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
+            <FaClipboardList />
+            <span className="py-4 ">Skill</span>
+          </h1>
 
-        <div className="mb-10">
-          <Link to="/createskill">
-            <Button name="Create" />
-          </Link>
-        </div>
+          <div className="mb-5">
+            <Link to="/createskill">
+              <Button name="Create" />
+            </Link>
+          </div>
 
-        <div className="overflow-hidden rounded-lg border border-gray-800">
-          <table className="min-w-full bg-white">
-            <thead className="bg-gray-300 text-black">
-              <tr className="border-b border-gray-800">
-                <TableHeader name="Action" />
-                <TableHeader name="Skill" />
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-800 hover:bg-gray-100">
-                <td className="px-7 py-5">
-                  <Link to="/viewskill">
-                    <Buttons />
-                  </Link>
-                </td>
-                <td className="px-7 py-5">Accounting</td>
-              </tr>
-              <tr className=" border-gray-800 hover:bg-gray-100">
-                <td className="px-7 py-5">
-                  <Link to="/ViewQuestion">
-                    <Buttons />
-                  </Link>
-                </td>
-                <td className="px-7 py-5">Web mobile app development</td>
-              
-              </tr>
-            </tbody>
-          </table>
+          <div className="overflow-hidden rounded-lg border border-gray-800">
+            <table className="min-w-full bg-white">
+              <thead className="bg-gray-300 text-black">
+                <tr className="border-b border-gray-800">
+                  <TableHeader name="Action" />
+                  <TableHeader name="Skill" />
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-800 hover:bg-gray-100">
+                  <td className="px-7 py-5">
+                    <Link to="/viewskill">
+                      <Buttons />
+                    </Link>
+                  </td>
+                  <td className="px-7 py-5">Accounting</td>
+                </tr>
+                <tr className=" border-gray-800 hover:bg-gray-100">
+                  <td className="px-7 py-5">
+                    <Link to="/ViewQuestion">
+                      <Buttons />
+                    </Link>
+                  </td>
+                  <td className="px-7 py-5">Web mobile app development</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

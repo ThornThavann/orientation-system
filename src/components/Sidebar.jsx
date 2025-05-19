@@ -9,7 +9,7 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex flex-col gap-4 mt-6">
-        <Link to="/dashboard" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/dasboardpage" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaTachometerAlt /> Dashboard
         </Link>
         <Link to="/results" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
@@ -21,7 +21,7 @@ export default function Sidebar() {
         <Link to="/skill" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaClipboardList /> Skill
         </Link>
-        <Link to="/Question" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/question" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaQuestionCircle /> Question
         </Link>
         <Link to="/member" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">

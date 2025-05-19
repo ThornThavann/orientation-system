@@ -7,10 +7,10 @@ export default function ViewMember() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
+        {/* <Header/> */}
 
       {/* Main content on the right */}
       <div className="flex-1 container mx-auto ">
-        <Header/>
 
          <div className="flex-1 container mx-auto p-[50px]">
         <h1 className="text-2xl font-semibold mb-5 flex items-center space-x-2 text-indigo-600">

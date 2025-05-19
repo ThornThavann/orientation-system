@@ -11,12 +11,10 @@ export default function Member() {
   return (
     
     <div className="flex min-h-screen">
-      
       <Sidebar />
-      {/* Main content */}
     
       <div className="flex-1 container mx-auto">
-       <Header />
+      <Header />
         <div className="flex-1 container mx-auto p-[50px]">
 
        

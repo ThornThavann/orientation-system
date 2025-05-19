@@ -1,9 +1,13 @@
 import React from "react";
-
+import Header from "../../components/Header";
+import Sidebar from "../../components/Sidebar";
 const DashboardPage = () => {
   return (
     <div className="min-h-screen p-6 bg-white">
       {/* Header */}
+      {/* <Header /> */}
+<Sidebar/>
+      {/* Dashboard Title */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-blue-600 font-bold text-xl flex items-center gap-2">
           <span className="text-2xl">▦</span> Dashboard
