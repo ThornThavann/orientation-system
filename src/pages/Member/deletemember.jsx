@@ -4,10 +4,8 @@ import { FaUserFriends } from "react-icons/fa";
 import Button from "../../components/Button";
 import TableHeader from "../../components/TableHeader";
 import Header from "../../components/Header";
-import Buttons from "../../components/ButtonAction";
 
-
-export default function Member() {
+export default function DeleteMember() {
   return (
     
     <div className="flex min-h-screen">
@@ -35,48 +33,30 @@ export default function Member() {
           <table className="min-w-full bg-white">
             <thead className="bg-gray-300 text-black">
               <tr className="border-b border-gray-800">
-                <TableHeader name="Action" />
                 <TableHeader name="Name" />
                 <TableHeader name="Email" />
               </tr>
             </thead>
             <tbody>
-                
               <tr className="border-b border-gray-800 hover:bg-gray-100">
                 <td className="px-7 py-5">
-                  <Link to="/viewmember">
-                    <Buttons />
-                  </Link>
+                <p>Lorn sreymoch</p>
                 </td>
-                <td className="px-7 py-5">Khon sreyvorleak</td>
-                <td className="px-7 py-5">Khonsreyvorleak@gmail.com</td>
+                <td className="px-7 py-5">lornsreymoch@gmil</td>
               </tr>
-              <tr className="border-b border-gray-800 hover:bg-gray-100">
+               <tr className="border-b border-gray-800 hover:bg-gray-100">
                 <td className="px-7 py-5">
-                  <Link to="/viewmember">
-                    <Buttons />
-                  </Link>
+                <p>Khon sreyvorleak</p>
                 </td>
-                <td className="px-7 py-5">Khon sreyvorleak</td>
-                <td className="px-7 py-5">Khonsreyvorleak@gmail.com</td>
+                <td className="px-7 py-5">khonsreyvorleak@gmil</td>
               </tr>
-              <tr className="border-b border-gray-800 hover:bg-gray-100">
+              <tr className=" border-gray-800 hover:bg-gray-100">
                 <td className="px-7 py-5">
-                  <Link to="/viewmember">
-                    <Buttons />
-                  </Link>
+               <p>Thorn Thavann</p>
                 </td>
-                <td className="px-7 py-5">Khon sreyvorleak</td>
-                <td className="px-7 py-5">Khonsreyvorleak@gmail.com</td>
-              </tr><tr className="border-b  hover:bg-gray-100">
-                <td className="px-7 py-5">
-                  <Link to="/viewmember">
-                    <Buttons />
-                  </Link>
-                </td>
-                <td className="px-7 py-5">Khon sreyvorleak</td>
-                <td className="px-7 py-5">Khonsreyvorleak@gmail.com</td>
+                <td className="px-7 py-5">ThornThavann@gmail.com</td>
               </tr>
+              
             </tbody>
           </table>
         </div>
