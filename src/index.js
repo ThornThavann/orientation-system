@@ -2,6 +2,7 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
+
 import Overview from './pages/Overview/overview.jsx'; 
 import Question from './pages/Question/question.jsx';
 import ViewQuestion from './pages/ViewQuestion/viewquestio.jsx';
@@ -16,10 +17,15 @@ import CreateMember from './pages/Member/createmember.jsx';
 import DeleteMember from './pages/Member/deletemember.jsx';
 import ViewMember from './pages/Member/viewmember.jsx';
 
+import Overview from './pages/Overview/overview.jsx'; // Make sure the path and filename are correct
+// import Question from './pages/Question/question.jsx';
+import DashboardPage from './pages/Dashboard/dashboard.jsx'; // Make sure the path and filename are correct
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Overview />} />  
+
+      <Route path="/" element={<DashboardPage />} />  
+      <Route path="/overview/" element={<Overview />} />  
       <Route path="/question" element={<Question />} />  
       <Route path="/viewquestion" element={<ViewQuestion />} />  
       <Route path="/createquestion" element={<CreateQuestion />} />  
@@ -37,6 +43,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 
 
+
+
+
+      {/* <Route path="/" element={<Question />} />   */}
+
+      
     </Routes>
   </BrowserRouter>
 );
