@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/" element={<DashboardPage />} />
       <Route path="/overview/" element={<Overview />} />
       <Route path="/question" element={<Question />} />
-      <Route path="/viewquestion" element={<ViewQuestion />} />
+      <Route path="/viewquestion/:id" element={<ViewQuestion />} />
       <Route path="/createquestion" element={<CreateQuestion />} />
       <Route path="/updatequestion" element={<UpdateQuestion />} />
       <Route path="/skill" element={<Skill />} />
