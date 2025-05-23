@@ -18,11 +18,12 @@ import ViewSkill from "./pages/Skill/viewskill.jsx";
 import UpdateSkill from "./pages/Skill/updateskill.jsx";
 import CreateSkill from "./pages/Skill/createskill.jsx";
 // import ViewOverview from "./pages/Overview/viewOverview.jsx";
-
+import Login from "./pages/Auth/login.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<DashboardPage />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/overview/" element={<Overview />} />
       <Route path="/question" element={<Question />} />
       <Route path="/viewquestion" element={<ViewQuestion />} />
