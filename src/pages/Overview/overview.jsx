@@ -13,8 +13,13 @@ export default function Overview() {
   const [availableYears, setAvailableYears] = useState([]);
 
   useEffect(() => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDc5ODA3MTIsImV4cCI6MTc0Nzk4NDMxMn0.kQYaa8RpKV7RdAKdlFrG4xM6sNILJDklraOcxQkmFkc";
+    const token = localStorage.getItem("token"); // Assumes token is saved under the key "token"
+  
+    if (!token) {
+      console.error("Token not found in localStorage.");
+      return;
+    }
+  
     fetch("http://localhost:3000/api/student-results", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -33,6 +38,7 @@ export default function Overview() {
       })
       .catch((err) => console.error("Error fetching data:", err));
   }, []);
+  
 
   const filteredResults = studentResults.filter((item) => {
     const term = searchTerm.toLowerCase();
