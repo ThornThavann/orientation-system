@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
-import { FaQuestionCircle } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa";
 import Button from "../../components/Button";
 import Buttons from "../../components/ButtonAction";
 import TableHeader from "../../components/TableHeader";
 import Header from "../../components/Header";
 
-export default function Question() {
+export default function Skill() {
   return (
     
     <div className="flex min-h-screen">
@@ -18,12 +18,12 @@ export default function Question() {
        <Header />
        
         <h1 className="text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
-          <FaQuestionCircle />
-          <span className="py-4 ">Question</span>
+          <FaClipboardList />
+          <span className="py-4 ">Skill</span>
         </h1>
 
         <div className="mb-10">
-          <Link to="/CreateQuestion">
+          <Link to="/createskill">
             <Button name="Create" />
           </Link>
         </div>
@@ -33,19 +33,17 @@ export default function Question() {
             <thead className="bg-gray-300 text-black">
               <tr className="border-b border-gray-800">
                 <TableHeader name="Action" />
-                <TableHeader name="Question" />
                 <TableHeader name="Skill" />
               </tr>
             </thead>
             <tbody>
               <tr className="border-b border-gray-800 hover:bg-gray-100">
                 <td className="px-7 py-5">
-                  <Link to="/ViewQuestion">
+                  <Link to="/viewskill">
                     <Buttons />
                   </Link>
                 </td>
-                <td className="px-7 py-5">What is HTML?</td>
-                <td className="px-7 py-5">WMAD</td>
+                <td className="px-7 py-5">Accounting</td>
               </tr>
               <tr className=" border-gray-800 hover:bg-gray-100">
                 <td className="px-7 py-5">
@@ -53,8 +51,8 @@ export default function Question() {
                     <Buttons />
                   </Link>
                 </td>
-                <td className="px-7 py-5">What is CSS?</td>
-                <td className="px-7 py-5">WMAD</td>
+                <td className="px-7 py-5">Web mobile app development</td>
+              
               </tr>
             </tbody>
           </table>

@@ -3,15 +3,34 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-import Overview from './pages/Overview/overview.jsx';
-import View from './pages/Overview/viewOverview.jsx';
+
+import Overview from './pages/Overview/overview.jsx'; 
+import Question from './pages/Question/question.jsx';
+import ViewQuestion from './pages/ViewQuestion/viewquestio.jsx';
+import CreateQuestion from './pages/CreateQuestion/createquestion.jsx';
+import UpdateQuestion from './pages/UpdateQuestion/updatequestion.jsx';
+import Skill from './pages/Skill/skill.jsx';
+import ViewSkill from './pages/ViewSkill/viewskill.jsx';
+import UpdateSkill from './pages/UpdateSkill/updateskill.jsx';
+import CreateSkill from './pages/CreateSkill/createskill.jsx';
+import DashboardPage from './pages/Dashboard/dashboard.jsx';
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Overview />} />  
-      {/* <Route path="/" element={<Question />} />   */}
-      
-       <Route path="/view" element={<View />} />  
+
+      <Route path="/" element={<DashboardPage />} />  
+      <Route path="/overview/" element={<Overview />} />  
+      <Route path="/question" element={<Question />} />  
+      <Route path="/viewquestion" element={<ViewQuestion />} />  
+      <Route path="/createquestion" element={<CreateQuestion />} />  
+      <Route path="/updatequestion" element={<UpdateQuestion />} />  
+      <Route path="/skill" element={<Skill />} />  
+      <Route path="/viewskill" element={<ViewSkill />} />  
+      <Route path="/updateskill" element={<UpdateSkill />} /> 
+       <Route path="/createskill" element={<CreateSkill />} />       
+       {/* <Route path="/view" element={<View />} />   */}
 
     </Routes>
   </BrowserRouter>

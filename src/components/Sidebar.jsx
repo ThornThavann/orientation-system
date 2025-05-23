@@ -9,22 +9,22 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex flex-col gap-4 mt-6">
-        <Link to="/dashboard" className="flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/dashboard" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaTachometerAlt /> Dashboard
         </Link>
-        <Link to="/results" className="flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/results" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaChartPie /> Results
         </Link>
-        <Link to="/overview" className="flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/overview" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaUser /> Overview
         </Link>
-        <Link to="/skill" className="flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/skill" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaClipboardList /> Skill
         </Link>
-        <Link to="/question" className="flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/Question" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaQuestionCircle /> Question
         </Link>
-        <Link to="/member" className="flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/member" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaUserFriends /> Member
         </Link>
       </nav>
