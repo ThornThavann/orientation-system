@@ -1,14 +1,16 @@
 import React from 'react';
 
-function Button ({name, onClick}){
-    return(
-      <div>
-        <button
+function Button({ name, onClick, kind }) {
+  return (
+    <div>
+      <button
         onClick={onClick}
-        className=" bg-blue-400 text-white px-6 py-2 rounded-md hover:opacity-80 transition">
+        className={kind} 
+      >
         {name}
       </button>   
-      </div>   
-    )
+    </div>   
+  );
 }
+
 export default Button;

@@ -17,7 +17,7 @@ import CreateQuestion from "./pages/Question/createquestion.jsx";
 import ViewSkill from "./pages/Skill/viewskill.jsx";
 import UpdateSkill from "./pages/Skill/updateskill.jsx";
 import CreateSkill from "./pages/Skill/createskill.jsx";
-import ViewOverview from "./pages/Overview/viewoverview.jsx";
+// import ViewOverview from "./pages/Overview/viewOverview.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -37,7 +37,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/member" element={<Member />} />
       <Route path="/deletemember" element={<DeleteMember />} />
       <Route path="/viewmember" element={<ViewMember />} />
-      <Route path="/viewoverview" element={<ViewOverview />} />
+      {/* <Route path="/viewoverview" element={<ViewOverview />} /> */}
+      {/* <Route path="/createstudent" element={<CreateStudent />} /> */}
+
     </Routes>
   </BrowserRouter>
 );

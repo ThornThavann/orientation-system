@@ -9,7 +9,7 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex flex-col gap-4 mt-6">
-        <Link to="/dasboardpage" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
+        <Link to="/" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaTachometerAlt /> Dashboard
         </Link>
         <Link to="/results" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
