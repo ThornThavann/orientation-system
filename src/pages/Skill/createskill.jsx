@@ -10,9 +10,9 @@ export default function Createskill() {
     <div className="flex min-h-screen">
       <Sidebar />
 
-      {/* Main content on the right */}
       <div className="flex-1 container mx-auto ">
-        <Header/>
+           <Header />
+             <div className="flex-1 container mx-auto p-[50px]">
         <h1 className=" text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
           <FaClipboardList />
           <span className="py-4 ">Skill</span>
@@ -47,6 +47,7 @@ export default function Createskill() {
           </Link>
           
         </div>
+      </div>
       </div>
     </div>
   );

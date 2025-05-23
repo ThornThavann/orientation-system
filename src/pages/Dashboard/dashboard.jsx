@@ -1,21 +1,38 @@
 import React from "react";
-import Sidebar from "../../components/Sidebar";
 import Header from "../../components/Header";
-
+import Sidebar from "../../components/Sidebar";
 const DashboardPage = () => {
   return (
-    <div className="min-h-screen flex bg-white">
-      <Sidebar />
-      <div className="flex flex-col flex-1">
-      
-        <main className="flex-1 p-6 overflow-auto">
-          {/* Header */}
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-blue-600 font-bold text-xl flex items-center gap-2">
-              <span className="text-2xl">▦</span> Dashboard
-            </h1>
-            <div tabIndex={0} role="button" className="text-blue-600 cursor-pointer font-semibold">
-              All ▼
+    <div className="min-h-screen p-6 bg-white">
+      {/* Header */}
+      {/* <Header /> */}
+<Sidebar/>
+      {/* Dashboard Title */}
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-blue-600 font-bold text-xl flex items-center gap-2">
+          <span className="text-2xl">▦</span> Dashboard
+        </h1>
+        <div className="text-blue-600 cursor-pointer font-semibold">All ▼</div>
+      </div>
+
+      {/* Top Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <Card title="Student" value="450" />
+        <Card title="Skill" value="50" />
+        <Card title="Lose Skill" value="Account" />
+      </div>
+
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <ChartBox title="Out side" percent="41%" number="550" />
+        <ChartBox title="Inside" percent="41%" number="750" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="border rounded-lg p-4 text-center">
+          <h2 className="text-lg font-semibold mb-2">The must skill</h2>
+          <div className="flex justify-center items-center mb-2">
+            <div className="w-20 h-20 rounded-full border-8 border-blue-700 flex items-center justify-center text-blue-700 font-bold text-xl">
+              93%
             </div>
           </div>
 
@@ -31,7 +48,7 @@ const DashboardPage = () => {
             <ChartBox title="Out side" percent="41%" number="550" />
             <ChartBox title="Inside" percent="60%" number="750" />
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );
