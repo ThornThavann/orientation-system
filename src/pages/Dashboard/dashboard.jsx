@@ -1,67 +1,24 @@
 import React from "react";
-import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
+import Header from "../../components/Header";
+import { YearCountPage } from "./YearCountPage";
+
 const DashboardPage = () => {
   return (
-    <div className="min-h-screen p-6 bg-white">
-      {/* Header */}
-      {/* <Header /> */}
-<Sidebar/>
-      {/* Dashboard Title */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-blue-600 font-bold text-xl flex items-center gap-2">
-          <span className="text-2xl">▦</span> Dashboard
-        </h1>
-        <div className="text-blue-600 cursor-pointer font-semibold">All ▼</div>
-      </div>
+    <div className="flex min-h-screen">
+      {/* Sidebar on the left */}
+      <Sidebar />
 
-      {/* Top Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <Card title="Student" value="450" />
-        <Card title="Skill" value="50" />
-        <Card title="Lose Skill" value="Account" />
-      </div>
-
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        <ChartBox title="Out side" percent="41%" number="550" />
-        <ChartBox title="Inside" percent="41%" number="750" />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="border rounded-lg p-4 text-center">
-          <h2 className="text-lg font-semibold mb-2">The must skill</h2>
-          <div className="flex justify-center items-center mb-2">
-            <div className="w-20 h-20 rounded-full border-8 border-blue-700 flex items-center justify-center text-blue-700 font-bold text-xl">
-              93%
-            </div>
-          </div>
-          <p className="text-sm font-medium text-gray-600">admin</p>
-          <p className="text-sm text-gray-500">250</p>
-        </div>
+      {/* Main content area */}
+      <div className="flex-1 flex flex-col bg-gray-100">
+        <Header />
+        <main className="p-6">
+          <YearCountPage />
+          {/* <SchoolCountPage /> */}
+        </main>
       </div>
     </div>
   );
 };
-
-const Card = ({ title, value }) => (
-  <div className="border shadow-sm p-4 rounded-md text-center">
-    <p className="text-gray-700 capitalize">{title}</p>
-    <h2 className="text-2xl font-bold">{value}</h2>
-    {/* Pie chart placeholder */}
-    <div className="mt-2 w-10 h-10 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full mx-auto" />
-  </div>
-);
-
-const ChartBox = ({ title, percent, number }) => (
-  <div className="border rounded-lg p-4 text-center">
-    <div className="flex justify-center mb-2">
-      <div className="w-16 h-16 rounded-full border-8 border-cyan-400 flex items-center justify-center text-xl font-bold text-gray-700">
-        {percent}
-      </div>
-    </div>
-    <p className="text-sm font-medium text-gray-600">{title}</p>
-    <p className="text-sm text-gray-500">{number}</p>
-  </div>
-);
 
 export default DashboardPage;

@@ -5,7 +5,9 @@ import Header from "../../components/Header";
 
 export default function ViewMember() {
   return (
+    
     <div className="flex min-h-screen">
+      
       <Sidebar />
         {/* <Header/> */}
 
@@ -56,4 +58,3 @@ export default function ViewMember() {
       </div>
   );
 }
-
