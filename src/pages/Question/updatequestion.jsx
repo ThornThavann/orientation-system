@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import { FaQuestionCircle } from "react-icons/fa";
 
 const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDc5ODE2MzAsImV4cCI6MTc0Nzk4NTIzMH0.60bu5oguilKExhEUvhIn1t3rG9tiAhu_DrKXHQZqYqI";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgwNzA0ODQsImV4cCI6MTc0ODA3NDA4NH0.yzA3MpWm_2JxHodFfA2i_8SYuEHsTa5P-ziU2x1ykQs";
 
 export default function UpdateQuestion() {
   const { id } = useParams();
@@ -91,7 +91,6 @@ export default function UpdateQuestion() {
                 onChange={(e) => setSelectedSkillId(e.target.value)}
                 className="mt-2 block w-[700px] px-4 py-4 border-2 border-gray-300 rounded-xl text-[18px]"
               >
-                <option value="">-- Select Skill --</option>
                 {skills.map((skill) => (
                   <option key={skill.id} value={skill.id.toString()}>
                     {skill.skill_name}
