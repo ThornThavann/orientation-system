@@ -26,12 +26,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/overview/" element={<Overview />} />
       <Route path="/question" element={<Question />} />
-      <Route path="/viewquestion" element={<ViewQuestion />} />
+      <Route path="/viewquestion/:id" element={<ViewQuestion />} />
       <Route path="/createquestion" element={<CreateQuestion />} />
-      <Route path="/updatequestion" element={<UpdateQuestion />} />
+      <Route path="/updatequestion/:id" element={<UpdateQuestion />} />
       <Route path="/skill" element={<Skill />} />
-      <Route path="/viewskill" element={<ViewSkill />} />
-      <Route path="/updateskill" element={<UpdateSkill />} />
+      <Route path="/viewskill/:id" element={<ViewSkill />} />
+      <Route path="/updateskill/:id" element={<UpdateSkill />} />
       <Route path="/createskill" element={<CreateSkill />} />
       <Route path="/member" element={<Member />} />
       <Route path="/createmember" element={<CreateMember />} />
