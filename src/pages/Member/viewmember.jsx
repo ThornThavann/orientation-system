@@ -56,7 +56,9 @@ export default function Viewuser() {
   if (!user) return <div className="text-center mt-10 text-red-500">User not found.</div>;
 
   return (
+    
     <div className="flex min-h-screen">
+      
       <Sidebar />
       {/* <Header/> */}
 

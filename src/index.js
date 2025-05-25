@@ -16,12 +16,12 @@ import CreateQuestion from "./pages/Question/createquestion.jsx";
 import ViewSkill from "./pages/Skill/viewskill.jsx";
 import UpdateSkill from "./pages/Skill/updateskill.jsx";
 import CreateSkill from "./pages/Skill/createskill.jsx";
-import ViewOverview from "./pages/Overview/viewoverview.jsx";
-
+import Login from "./pages/Auth/login.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<DashboardPage />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/overview/" element={<Overview />} />
       <Route path="/question" element={<Question />} />
       <Route path="/viewquestion/:id" element={<ViewQuestion />} />
@@ -34,8 +34,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/member" element={<Member />} />
       <Route path="/createmember" element={<CreateMember />} />
       <Route path="/member" element={<Member />} />
-      <Route path="/viewmember/:id" element={<ViewMember />} />
-      <Route path="/viewoverview" element={<ViewOverview />} />
+      <Route path="/viewmember" element={<ViewMember />} />
+      {/* <Route path="/viewoverview" element={<ViewOverview />} /> */}
+      {/* <Route path="/createstudent" element={<CreateStudent />} /> */}
+
     </Routes>
   </BrowserRouter>
 );

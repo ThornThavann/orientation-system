@@ -1,67 +1,195 @@
-import React from "react";
-import Header from "../../components/Header";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
-const DashboardPage = () => {
+import Header from "../../components/Header";
+
+// 🔹 Card component
+const Card = ({ title, value }) => (
+  <div className="border border-gray-300 p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+    <p className="text-gray-700 font-semibold mb-2">{title}</p>
+    <h2 className="text-2xl font-bold text-green-600">{value}</h2>
+  </div>
+);
+
+// 🔹 YearCountPage (Student Count & Popular Skill)
+const YearCountPage = ({ year }) => {
+  const [studentData, setStudentData] = useState([]);
+  const [skillData, setSkillData] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [latestSkill, setLatestSkill] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    fetch("http://localhost:3000/api/student/year-count", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        const data = json.data || [];
+        setStudentData(data);
+        setFilteredStudents(data);
+      })
+      .catch((err) => console.error("Student fetch error:", err));
+
+    fetch("http://localhost:3000/api/top-skill-year", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        const sorted = json.data.sort((a, b) => b.year.localeCompare(a.year));
+        setSkillData(sorted);
+        setLatestSkill(sorted[0]);
+      })
+      .catch((err) => console.error("Skill fetch error:", err));
+  }, []);
+
+  useEffect(() => {
+    if (year === "") {
+      setFilteredStudents(studentData);
+      setLatestSkill(skillData[0]);
+    } else {
+      const studentFiltered = studentData.filter((item) =>
+        item.year.toString().startsWith(year.toString())
+      );
+      const skillFiltered = skillData.find((item) =>
+        item.year.toString().startsWith(year.toString())
+      );
+      setFilteredStudents(studentFiltered);
+      setLatestSkill(skillFiltered || null);
+    }
+  }, [year, studentData, skillData]);
+
   return (
-    <div className="min-h-screen p-6 bg-white">
-      {/* Header */}
-      {/* <Header /> */}
-<Sidebar/>
-      {/* Dashboard Title */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-blue-600 font-bold text-xl flex items-center gap-2">
-          <span className="text-2xl">▦</span> Dashboard
-        </h1>
-        <div className="text-blue-600 cursor-pointer font-semibold">All ▼</div>
-      </div>
-
-      {/* Top Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <Card title="Student" value="450" />
-        <Card title="Skill" value="50" />
-        <Card title="Lose Skill" value="Account" />
-      </div>
-
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        <ChartBox title="Out side" percent="41%" number="550" />
-        <ChartBox title="Inside" percent="41%" number="750" />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="border rounded-lg p-4 text-center">
-          <h2 className="text-lg font-semibold mb-2">The must skill</h2>
-          <div className="flex justify-center items-center mb-2">
-            <div className="w-20 h-20 rounded-full border-8 border-blue-700 flex items-center justify-center text-blue-700 font-bold text-xl">
-              93%
-            </div>
+    <div>
+      {/* 🔹 Popular Skill Section */}
+      <section className="mb-8">
+        <h1 className="text-xl font-bold mb-2">Popular Skill</h1>
+        {latestSkill ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Card title={`Year: ${latestSkill.year}`} value={latestSkill.skill_name} />
+            <Card title="Total Students" value={latestSkill.studenttotal} />
           </div>
-          <p className="text-sm font-medium text-gray-600">admin</p>
-          <p className="text-sm text-gray-500">250</p>
-        </div>
+        ) : (
+          <p>No data this year</p>
+        )}
+      </section>
+
+      {/* 🔹 Student Year Count Section */}
+      <section>
+        <h2 className="text-xl font-bold mb-2">Student Count</h2>
+        {filteredStudents.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {filteredStudents.map(({ year, total_students }) => (
+              <Card key={year} title={`Year ${year}`} value={total_students} />
+            ))}
+          </div>
+        ) : (
+          <p>No data this year</p>
+        )}
+      </section>
+    </div>
+  );
+};
+
+// 🔹 School Count Page
+const SchoolCountPage = ({ year }) => {
+  const [schoolData, setSchoolData] = useState([]);
+  const [filteredSchoolData, setFilteredSchoolData] = useState([]);
+  const [schoolLoading, setSchoolLoading] = useState(true);
+  const [schoolError, setSchoolError] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    fetch("http://localhost:3000/api/student/school-count", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch school count");
+        return res.json();
+      })
+      .then((json) => {
+        setSchoolData(json);
+        setFilteredSchoolData(json);
+        setSchoolLoading(false);
+      })
+      .catch((err) => {
+        setSchoolError(err.message);
+        setSchoolLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (year === "") {
+      setFilteredSchoolData(schoolData);
+    } else {
+      const filtered = schoolData.filter((item) =>
+        item.year?.toString().startsWith(year.toString())
+      );
+      setFilteredSchoolData(filtered);
+    }
+  }, [year, schoolData]);
+
+  return (
+    <div>
+      <h3 className="text-xl font-semibold text-green-600 mb-4">
+        Student by school in a year
+      </h3>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {schoolLoading ? (
+          <p>Loading school data...</p>
+        ) : schoolError ? (
+          <p className="text-red-500">Error: {schoolError}</p>
+        ) : filteredSchoolData.length > 0 ? (
+          filteredSchoolData.map(({ school, year, student_count }, index) => (
+            <Card
+              key={`${school}-${year}-${index}`}
+              title={`${school} (${year})`}
+              value={student_count}
+            />
+          ))
+        ) : (
+          <p>No data this year</p>
+        )}
       </div>
     </div>
   );
 };
 
-const Card = ({ title, value }) => (
-  <div className="border shadow-sm p-4 rounded-md text-center">
-    <p className="text-gray-700 capitalize">{title}</p>
-    <h2 className="text-2xl font-bold">{value}</h2>
-    {/* Pie chart placeholder */}
-    <div className="mt-2 w-10 h-10 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full mx-auto" />
-  </div>
-);
+// 🔹 Main Dashboard Page
+const DashboardPage = () => {
+  const [yearInput, setYearInput] = useState("");
 
-const ChartBox = ({ title, percent, number }) => (
-  <div className="border rounded-lg p-4 text-center">
-    <div className="flex justify-center mb-2">
-      <div className="w-16 h-16 rounded-full border-8 border-cyan-400 flex items-center justify-center text-xl font-bold text-gray-700">
-        {percent}
+  return (
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <div className="flex-1 flex flex-col bg-gray-100">
+        <Header />
+        <main className="p-6 space-y-8">
+          {/* 🔍 Year Search Input (Auto Filter) */}
+          <div className="flex items-center gap-4 mb-6">
+            <input
+              type="number"
+              placeholder="Type year to filter..."
+              value={yearInput}
+              onChange={(e) => setYearInput(e.target.value)}
+              className="border border-gray-300 px-4 py-2 rounded w-64"
+            />
+          </div>
+
+          {/* 🔹 Year Count + Skill */}
+          <YearCountPage year={yearInput} />
+
+          {/* 🔹 School Count */}
+          <SchoolCountPage year={yearInput} />
+        </main>
       </div>
     </div>
-    <p className="text-sm font-medium text-gray-600">{title}</p>
-    <p className="text-sm text-gray-500">{number}</p>
-  </div>
-);
+  );
+};
 
 export default DashboardPage;
