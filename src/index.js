@@ -34,7 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/member" element={<Member />} />
       <Route path="/createmember" element={<CreateMember />} />
       <Route path="/member" element={<Member />} />
-      <Route path="/viewmember" element={<ViewMember />} />
+      <Route path="/viewmember/:id" element={<ViewMember />} />
       {/* <Route path="/viewoverview" element={<ViewOverview />} /> */}
       {/* <Route path="/createstudent" element={<CreateStudent />} /> */}
 

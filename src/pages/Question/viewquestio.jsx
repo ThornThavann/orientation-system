@@ -52,7 +52,7 @@ export default function ViewQuestion() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/question/delete/${id}`, {
+      await axios.delete(`http://localhost:3000/api/question/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Question deleted successfully!");
