@@ -12,9 +12,6 @@ export default function Sidebar() {
         <Link to="/dashboard" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaTachometerAlt /> Dashboard
         </Link>
-        <Link to="/results" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
-          <FaChartPie /> Results
-        </Link>
         <Link to="/overview" className=" text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaUser /> Overview
         </Link>
