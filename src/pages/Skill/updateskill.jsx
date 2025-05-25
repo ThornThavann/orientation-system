@@ -6,14 +6,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgwNzA0ODQsImV4cCI6MTc0ODA3NDA4NH0.yzA3MpWm_2JxHodFfA2i_8SYuEHsTa5P-ziU2x1ykQs";
 
 export default function UpdateSkill() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [skill, setSkill] = useState("");
-
+  const token = localStorage.getItem("token"); 
   useEffect(() => {
     const fetchSkill = async () => {
       try {

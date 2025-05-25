@@ -5,13 +5,11 @@ import { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import { FaQuestionCircle } from "react-icons/fa";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgwNzA0ODQsImV4cCI6MTc0ODA3NDA4NH0.yzA3MpWm_2JxHodFfA2i_8SYuEHsTa5P-ziU2x1ykQs";
-
 export default function CreateQuestion() {
   const [question, setQuestion] = useState("");
   const [skillId, setSkillId] = useState("");
   const [skills, setSkills] = useState([]);
+  const token = localStorage.getItem("token"); // Get token from localStorage
 
   useEffect(() => {
     const fetchSkills = async () => {

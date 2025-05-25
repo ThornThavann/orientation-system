@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgxNjAwMjgsImV4cCI6MTc0ODE2MzYyOH0.KlCtPJ8C0CY4bG_qOO1eDKVkC2MP0pdn2Q9n-HIYAFY";
 
 export default function CreateMember() {
   const [name, setName] = useState("");
@@ -14,6 +12,7 @@ export default function CreateMember() {
   const [success, setSuccess] = useState("");
 
   const navigate = useNavigate();
+  const token = localStorage.getItem("token"); // Get token from localStorage
 
   async function handleSubmit(e) {
     e.preventDefault();

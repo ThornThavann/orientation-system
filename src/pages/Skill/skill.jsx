@@ -8,13 +8,12 @@ import Header from "../../components/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgwNzA0ODQsImV4cCI6MTc0ODA3NDA4NH0.yzA3MpWm_2JxHodFfA2i_8SYuEHsTa5P-ziU2x1ykQs";
-
 export default function Skill() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const token = localStorage.getItem("token"); // ✅ Get token from localStorage
 
   useEffect(() => {
     axios
@@ -42,7 +41,7 @@ export default function Skill() {
       .finally(() => {
         setLoading(false);
       });
-  }, []); // <-- no extra closing brace here
+  }, []);
 
   return (
     <div className="flex min-h-screen">

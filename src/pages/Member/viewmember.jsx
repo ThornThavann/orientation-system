@@ -5,8 +5,6 @@ import { FaUserFriends } from "react-icons/fa";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgxNjAwMjgsImV4cCI6MTc0ODE2MzYyOH0.KlCtPJ8C0CY4bG_qOO1eDKVkC2MP0pdn2Q9n-HIYAFY"; // Replace with your real token or handle auth better
 
 export default function Viewuser() {
   const { id } = useParams();
@@ -14,6 +12,7 @@ export default function Viewuser() {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token"); // Get token from localStorage
 
   useEffect(() => {
     console.log("User ID param:", id); // Debugging

@@ -5,12 +5,11 @@ import Header from "../../components/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgwNzA0ODQsImV4cCI6MTc0ODA3NDA4NH0.yzA3MpWm_2JxHodFfA2i_8SYuEHsTa5P-ziU2x1ykQs";
 
 export default function Createskill() {
   const [skill, setSkill] = useState("");
   const navigate = useNavigate();
+  const token = localStorage.getItem("token"); // Get token from localStorage
 
   useEffect(() => {
   }, []);
