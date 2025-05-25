@@ -8,7 +8,6 @@ import Question from "./pages/Question/question.jsx";
 import Skill from "./pages/Skill/skill.jsx";
 import Member from "./pages/Member/member.jsx";
 import CreateMember from "./pages/Member/createmember.jsx";
-import DeleteMember from "./pages/Member/deletemember.jsx";
 import ViewMember from "./pages/Member/viewmember.jsx";
 import DashboardPage from "./pages/Dashboard/dashboard.jsx";
 import ViewQuestion from "./pages/Question/viewquestio.jsx";
@@ -17,7 +16,6 @@ import CreateQuestion from "./pages/Question/createquestion.jsx";
 import ViewSkill from "./pages/Skill/viewskill.jsx";
 import UpdateSkill from "./pages/Skill/updateskill.jsx";
 import CreateSkill from "./pages/Skill/createskill.jsx";
-// import ViewOverview from "./pages/Overview/viewOverview.jsx";
 import Login from "./pages/Auth/login.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -36,7 +34,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/member" element={<Member />} />
       <Route path="/createmember" element={<CreateMember />} />
       <Route path="/member" element={<Member />} />
-      <Route path="/deletemember" element={<DeleteMember />} />
       <Route path="/viewmember" element={<ViewMember />} />
       {/* <Route path="/viewoverview" element={<ViewOverview />} /> */}
       {/* <Route path="/createstudent" element={<CreateStudent />} /> */}

@@ -1,27 +1,81 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4LCJlbWFpbCI6Im1vY2hAZXhhbXBsZS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDgxNjAwMjgsImV4cCI6MTc0ODE2MzYyOH0.KlCtPJ8C0CY4bG_qOO1eDKVkC2MP0pdn2Q9n-HIYAFY";
+
 export default function CreateMember() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name,   // changed here
+          email,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "Failed to create user");
+      }
+
+      setSuccess("User created successfully!");
+      setName("");
+      setEmail("");
+      setPassword("");
+
+      setTimeout(() => {
+        navigate("/createmember");
+      }, 1500);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar on the left */}
       <Sidebar />
 
-      {/* Main content on the right */}
       <div className="flex-1 container mx-auto p-[100px]">
         <h1 className="text-2xl font-bold mb-5 text-indigo-600">Member</h1>
 
-        <form className=" flex flex-col gap-4 ">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex flex-col">
-            <label htmlFor="fullname" className="mb-1 font-semibold text-lg">
-              Full Name
+            <label htmlFor="name" className="mb-1 font-semibold text-lg">
+              Name
             </label>
             <input
               type="text"
-              id="fullname"
-              name="fullname"
+              id="name"
+              name="name"
               className="border border-gray-300 rounded-2xl px-3 py-4 w-[600px]"
-              placeholder="Enter your full name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
           </div>
 
@@ -33,8 +87,11 @@ export default function CreateMember() {
               type="email"
               id="email"
               name="email"
-              className="border border-gray-300 rounded-2xl  px-3 py-4  w-[600px]"
+              className="border border-gray-300 rounded-2xl px-3 py-4 w-[600px]"
               placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
@@ -46,29 +103,37 @@ export default function CreateMember() {
               type="password"
               id="password"
               name="password"
-              className="border border-gray-300 rounded-2xl  px-3 py-4  w-[600px]"
+              className="border border-gray-300 rounded-2xl px-3 py-4 w-[600px]"
               placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
+
+          {error && <p className="text-red-500">{error}</p>}
+          {success && <p className="text-green-500">{success}</p>}
+
+          <div className="flex space-x-5 mt-10">
+            <Link to="/member">
+              <button
+                type="button"
+                className="bg-gray-400 text-white px-6 py-2 rounded-md hover:opacity-80 transition"
+              >
+                Cancel
+              </button>
+            </Link>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-blue-400 text-white px-6 py-2 rounded-md hover:opacity-80 transition disabled:opacity-50"
+            >
+              {loading ? "Saving..." : "Save"}
+            </button>
+          </div>
         </form>
-
-        <div className="flex space-x-5 mt-10">
-        <Link to="/member">
-        <button className="bg-gray-400 text-white px-6 py-2 rounded-md hover:opacity-80 transition">
-          Cancel
-        </button>
-        </Link>
-
-
-        <Link to="/member">
-          <button className="bg-blue-400 text-white px-6 py-2 rounded-md hover:opacity-80 transition">
-            Save
-          </button>
-        </Link>
-        </div>
       </div>
     </div>
   );
 }
-
-
