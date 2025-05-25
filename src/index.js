@@ -8,7 +8,6 @@ import Question from "./pages/Question/question.jsx";
 import Skill from "./pages/Skill/skill.jsx";
 import Member from "./pages/Member/member.jsx";
 import CreateMember from "./pages/Member/createmember.jsx";
-import DeleteMember from "./pages/Member/deletemember.jsx";
 import ViewMember from "./pages/Member/viewmember.jsx";
 import DashboardPage from "./pages/Dashboard/dashboard.jsx";
 import ViewQuestion from "./pages/Question/viewquestio.jsx";
@@ -35,8 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/member" element={<Member />} />
       <Route path="/createmember" element={<CreateMember />} />
       <Route path="/member" element={<Member />} />
-      <Route path="/deletemember" element={<DeleteMember />} />
-      <Route path="/viewmember" element={<ViewMember />} />
+      <Route path="/viewmember/:id" element={<ViewMember />} />
       <Route path="/viewoverview" element={<ViewOverview />} />
     </Routes>
   </BrowserRouter>
