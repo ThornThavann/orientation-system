@@ -43,7 +43,7 @@ export default function UpdateQuestion() {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/question/update/${id}`,
+        `http://localhost:3000/api/question/${id}`,
         {
           question: questionText,
           skill_id: Number(selectedSkillId),
