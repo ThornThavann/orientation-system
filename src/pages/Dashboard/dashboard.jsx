@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import Header from "../../components/Header";
+import { FaTachometerAlt } from "react-icons/fa";
 
-// 🔹 Card component
 const Card = ({ title, value }) => (
   <div className="border border-gray-300 p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
     <p className="text-gray-700 font-semibold mb-2">{title}</p>
@@ -10,43 +10,48 @@ const Card = ({ title, value }) => (
   </div>
 );
 
-// 🔹 YearCountPage (Student Count & Popular Skill)
 const YearCountPage = ({ year }) => {
   const [studentData, setStudentData] = useState([]);
   const [skillData, setSkillData] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [latestSkill, setLatestSkill] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    setLoading(true);
 
-    fetch("http://localhost:3000/api/student/year-count", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const data = json.data || [];
-        setStudentData(data);
-        setFilteredStudents(data);
-      })
-      .catch((err) => console.error("Student fetch error:", err));
+    Promise.all([
+      fetch("http://localhost:3000/api/student/year-count", {
+        headers: { Authorization: `Bearer ${token}` },
+      }).then((res) => res.json()),
 
-    fetch("http://localhost:3000/api/top-skill-year", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const sorted = json.data.sort((a, b) => b.year.localeCompare(a.year));
-        setSkillData(sorted);
-        setLatestSkill(sorted[0]);
+      fetch("http://localhost:3000/api/top-skill-year", {
+        headers: { Authorization: `Bearer ${token}` },
+      }).then((res) => res.json()),
+    ])
+      .then(([studentRes, skillRes]) => {
+        const students = studentRes.data || [];
+        const skills = skillRes.data || [];
+        setStudentData(students);
+        setFilteredStudents(students);
+
+        const sortedSkills = skills.sort((a, b) => b.year.localeCompare(a.year));
+        setSkillData(sortedSkills);
+        setLatestSkill(sortedSkills[0] || null);
+        setLoading(false);
       })
-      .catch((err) => console.error("Skill fetch error:", err));
+      .catch((err) => {
+        setError("Failed to fetch data");
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
     if (year === "") {
       setFilteredStudents(studentData);
-      setLatestSkill(skillData[0]);
+      setLatestSkill(skillData[0] || null);
     } else {
       const studentFiltered = studentData.filter((item) =>
         item.year.toString().startsWith(year.toString())
@@ -59,9 +64,11 @@ const YearCountPage = ({ year }) => {
     }
   }, [year, studentData, skillData]);
 
+  if (loading) return <p>Loading data...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+
   return (
     <div>
-      {/* 🔹 Popular Skill Section */}
       <section className="mb-8">
         <h1 className="text-xl font-bold mb-2">Popular Skill</h1>
         {latestSkill ? (
@@ -74,7 +81,6 @@ const YearCountPage = ({ year }) => {
         )}
       </section>
 
-      {/* 🔹 Student Year Count Section */}
       <section>
         <h2 className="text-xl font-bold mb-2">Student Count</h2>
         {filteredStudents.length > 0 ? (
@@ -91,16 +97,14 @@ const YearCountPage = ({ year }) => {
   );
 };
 
-// 🔹 School Count Page
 const SchoolCountPage = ({ year }) => {
   const [schoolData, setSchoolData] = useState([]);
   const [filteredSchoolData, setFilteredSchoolData] = useState([]);
-  const [schoolLoading, setSchoolLoading] = useState(true);
-  const [schoolError, setSchoolError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     fetch("http://localhost:3000/api/student/school-count", {
       headers: {
         "Content-Type": "application/json",
@@ -114,11 +118,11 @@ const SchoolCountPage = ({ year }) => {
       .then((json) => {
         setSchoolData(json);
         setFilteredSchoolData(json);
-        setSchoolLoading(false);
+        setLoading(false);
       })
       .catch((err) => {
-        setSchoolError(err.message);
-        setSchoolLoading(false);
+        setError(err.message);
+        setLoading(false);
       });
   }, []);
 
@@ -133,34 +137,32 @@ const SchoolCountPage = ({ year }) => {
     }
   }, [year, schoolData]);
 
+  if (loading) return <p>Loading school data...</p>;
+  if (error) return <p className="text-red-500">Error: {error}</p>;
+
   return (
     <div>
       <h3 className="text-xl font-semibold text-green-600 mb-4">
         Student by school in a year
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {schoolLoading ? (
-          <p>Loading school data...</p>
-        ) : schoolError ? (
-          <p className="text-red-500">Error: {schoolError}</p>
-        ) : filteredSchoolData.length > 0 ? (
-          filteredSchoolData.map(({ school, year, student_count }, index) => (
+      {filteredSchoolData.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {filteredSchoolData.map(({ school, year, student_count }, index) => (
             <Card
               key={`${school}-${year}-${index}`}
               title={`${school} (${year})`}
               value={student_count}
             />
-          ))
-        ) : (
-          <p>No data this year</p>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p>No data this year</p>
+      )}
     </div>
   );
 };
 
-// 🔹 Main Dashboard Page
 const DashboardPage = () => {
   const [yearInput, setYearInput] = useState("");
 
@@ -170,7 +172,11 @@ const DashboardPage = () => {
       <div className="flex-1 flex flex-col bg-gray-100">
         <Header />
         <main className="p-6 space-y-8">
-          {/* 🔍 Year Search Input (Auto Filter) */}
+          <h1 className="flex items-center text-indigo-600 gap-2 text-2xl font-bold">
+            <FaTachometerAlt />
+            Dashboard
+          </h1>
+
           <div className="flex items-center gap-4 mb-6">
             <input
               type="number"
@@ -181,10 +187,7 @@ const DashboardPage = () => {
             />
           </div>
 
-          {/* 🔹 Year Count + Skill */}
           <YearCountPage year={yearInput} />
-
-          {/* 🔹 School Count */}
           <SchoolCountPage year={yearInput} />
         </main>
       </div>
