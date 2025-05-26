@@ -13,14 +13,15 @@ export default function Skill() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+  const token = localStorage.getItem("token"); 
+
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/skill/all", {
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         if (Array.isArray(res.data)) {

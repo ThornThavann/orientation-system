@@ -6,10 +6,11 @@ export default function Sidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token
-    navigate("/");               // Go to login page automatically
+    if (window.confirm("Are you sure you want to log out?")) {
+      localStorage.removeItem("token"); // Remove token
+      navigate("/");                     // Go to login page automatically
+    }
   };
-  
 
   return (
     <aside className="h-screen w-80 bg-gray-100 p-4 flex flex-col gap-6 text-blue-600">
@@ -33,7 +34,7 @@ export default function Sidebar() {
         <Link to="/member" className="text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded">
           <FaUserFriends /> Member
         </Link>
-        {/* Use button for logout */}
+        {/* Logout button with confirmation */}
         <button
           onClick={handleLogout}
           className="text-2xl font-semibold flex items-center gap-2 hover:bg-gray-300 px-3 py-2 rounded text-left"
