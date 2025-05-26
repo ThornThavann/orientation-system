@@ -8,12 +8,12 @@ import Header from "../../components/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+
 export default function Skill() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const token = localStorage.getItem("token"); // ✅ Get token from localStorage
+  
 
   useEffect(() => {
     axios
@@ -41,7 +41,7 @@ export default function Skill() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, []); // <-- no extra closing brace here
 
   return (
     <div className="flex min-h-screen">

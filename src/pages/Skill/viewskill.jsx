@@ -12,7 +12,7 @@ export default function ViewSkill() {
 
   const [skill, setSkill] = useState(null);
   const [loading, setLoading] = useState(true);
-  const token = localStorage.getItem("token"); // Get token from localStorage
+  const token = localStorage.getItem("token"); 
 
   useEffect(() => {
     const fetchSkill = async () => {

@@ -13,7 +13,6 @@ export default function Member() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const token = localStorage.getItem("token"); // Get token from localStorage
 
   useEffect(() => {
     axios
