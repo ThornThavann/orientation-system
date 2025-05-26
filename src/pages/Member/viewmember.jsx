@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import { FaUserFriends } from "react-icons/fa";
-// import Header from "../../components/Header";
+import Header from "../../components/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -56,19 +56,17 @@ export default function Viewuser() {
 
   return (
     
-    <div className="flex min-h-screen">
-      
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
-      {/* <Header/> */}
-
-      {/* Main content */}
-      <div className="flex-1 container mx-auto p-[50px]">
-        <h1 className="text-2xl font-semibold mb-5 flex items-center space-x-2 text-indigo-600">
+      <div className="flex-1 container mx-auto px-6 py-10">
+        <Header />
+          <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+        <h1 className="text-3xl font-bold text-indigo-700 flex items-center gap-2 mb-6">
           <FaUserFriends />
           <span>User</span>
         </h1>
 
-        <div className="flex p-4 space-x-4 ">
+        <div className="flex p-4 space-x-4">
           <Link to="/member">
             <button className="bg-gray-400 text-white px-6 py-2 rounded-md hover:opacity-80 transition">
               Back
@@ -83,20 +81,21 @@ export default function Viewuser() {
 
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-gray-800 mt-5">
+        <div className="overflow-hidden rounded-lg border border-gray-800 mt-4">
           <table className="w-full bg-white">
             <tbody>
-              <tr className="border-b border-gray-800 hover:bg-gray-100">
-                <td className="px-2 font-semibold text-base">Name</td>
-                <td className="py-5">{user.name}</td>
+              <tr className="border-gray-800 hover:bg-gray-100">
+                <td className="px-4 py-3 font-semibold text-base w-1/3">Name</td>
+                <td className="px-4 py-3">{user.name}</td>
               </tr>
               <tr className="border-gray-800 hover:bg-gray-100">
-                <td className="px-2 font-semibold text-base">Email</td>
-                <td className="py-5">{user.email}</td>
+                <td className="px-4 py-3 font-semibold text-base w-1/3">Email</td>
+                <td className="px-4 py-3">{user.email}</td>
               </tr>
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </div>
   );

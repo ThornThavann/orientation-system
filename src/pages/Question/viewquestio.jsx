@@ -67,12 +67,12 @@ export default function ViewQuestion() {
   if (!question) return <div className="p-6">Question not found.</div>;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 container mx-auto">
+      <div className="flex-1 container mx-auto px-6 py-10">
         <Header />
-        <div className="flex-1 container mx-auto p-[50px]">
-          <h1 className="text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
+        <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+          <h1 className="text-3xl font-bold text-indigo-700 flex items-center gap-2 mb-6">
             <FaQuestionCircle />
             <span>Question</span>
           </h1>
@@ -98,13 +98,13 @@ export default function ViewQuestion() {
           <div className="overflow-hidden rounded-lg border border-gray-800 mt-4">
             <table className="w-full bg-white">
               <tbody>
-                <tr className="border-b border-gray-800 hover:bg-gray-100">
-                  <td className="px-2 font-semibold text-base">Question</td>
-                  <td className="py-5">{question.question}</td>
+                <tr className="border-gray-800 hover:bg-gray-100">
+                  <td className="px-4 py-3 font-semibold text-base w-1/3">Question</td>
+                  <td className="px-4 py-3">{question.question}</td>
                 </tr>
                 <tr className="border-gray-800 hover:bg-gray-100">
-                  <td className="px-2 font-semibold text-base">Skill</td>
-                  <td className="py-5">{skillName}</td>
+                  <td className="px-4 py-3 font-semibold text-base w-1/3">Skill</td>
+                  <td className="px-4 py-3">{skillName}</td>
                 </tr>
               </tbody>
             </table>
