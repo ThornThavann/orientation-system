@@ -5,7 +5,7 @@ function Button({ name, onClick, kind }) {
     <div>
       <button
         onClick={onClick}
-        className={kind} 
+        className="bg-blue-500 text-white text-sm px-6 py-3 rounded hover:opacity-80 transition"
       >
         {name}
       </button>   

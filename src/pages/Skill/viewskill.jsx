@@ -63,17 +63,17 @@ export default function ViewSkill() {
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
 
-      <div className="flex-1 container mx-auto">
+      <div className="flex-1 container mx-auto px-6 py-10">
         <Header />
 
-        <div className="p-[50px]">
+        <div className="bg-white shadow-md rounded-lg p-6 mt-6">
           {/* Page title */}
-          <h1 className="text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
+          <h1 className="text-3xl font-bold text-indigo-700 flex items-center gap-2 mb-6">
             <FaClipboardList />
-            <span>Skill</span>
+            <span className="">Skill</span>
           </h1>
 
           {/* Action buttons */}

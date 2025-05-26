@@ -57,20 +57,20 @@ export default function CreateQuestion() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 container mx-auto">
+      <div className="flex-1 container mx-auto px-6 py-10">
         <Header />
-        <div className="flex-1 container mx-auto p-[50px]">
-          <h1 className="text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
+        <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+          <h1 className="text-3xl font-bold text-indigo-700 flex items-center gap-2 mb-6">
             <FaQuestionCircle />
             <span className="py-4">Create Question</span>
           </h1>
 
           <form onSubmit={handleSubmit}>
             <div className="overflow-hidden rounded-lg mt-10">
-              <label className="block">
-                <span className="text-gray-700 font-semibold">Question</span>
+              <label className="block mt-5">
+                <span className="text-gray-700 font-semibold text-xl">Question</span>
                 <input
                   type="text"
                   name="question"
@@ -82,12 +82,12 @@ export default function CreateQuestion() {
               </label>
 
               <label className="block mt-5">
-                <span className="text-gray-700 font-semibold">Skill</span>
+                <span className="text-gray-700 font-semibold text-xl">Skill</span>
                 <select
                   name="skillId"
                   value={skillId}
                   onChange={(e) => setSkillId(e.target.value)}
-                  className="text-[18px] mt-4 block w-[900px] px-4 py-4 border-2 border-gray-300 rounded-xl"
+                  className="text-[18px] mt-4 block w-[900px] py-4 px-4 border-2 border-gray-300 rounded-xl"
                   required
                 >
                   <option value="" disabled>

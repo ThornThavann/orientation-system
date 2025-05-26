@@ -61,19 +61,19 @@ export default function UpdateQuestion() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 container mx-auto">
+      <div className="flex-1 container mx-auto px-6 py-10">
         <Header />
-        <div className="flex-1 container mx-auto p-[50px]">
-          <h1 className="text-2xl font-semibold mb-4 flex items-center space-x-2 text-indigo-600">
+        <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+          <h1 className="text-3xl font-bold text-indigo-700 flex items-center gap-2 mb-6">
             <FaQuestionCircle />
             <span>Update Question</span>
           </h1>
 
-          <div className="overflow-hidden rounded-lg mt-20">
-            <label className="block">
-              <span className="text-gray-700 font-semibold">Question</span>
+          <div className="overflow-hidden rounded-lg mt-10">
+            <label className="block  mt-5">
+              <span className="text-gray-700 font-semibold text-xl">Question</span>
               <input
                 type="text"
                 name="question"
@@ -84,7 +84,7 @@ export default function UpdateQuestion() {
             </label>
 
             <div className="mt-6">
-              <span className="text-gray-700 font-semibold">Skill</span>
+              <span className="text-gray-700 font-semibold text-xl">Skill</span>
               <select
                 value={selectedSkillId}
                 onChange={(e) => setSelectedSkillId(e.target.value)}

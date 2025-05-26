@@ -13,9 +13,10 @@ export default function Member() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const token = localStorage.getItem("token"); // Get token from localStorage
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
+    
     axios
       .get("http://localhost:3000/api/user/user", {
         headers: {
@@ -47,12 +48,12 @@ export default function Member() {
   if (error) return <div className="text-center mt-10 text-red-500">{error}</div>;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 container mx-auto">
+      <div className="flex-1 container mx-auto px-6 py-10">
         <Header />
-        <div className="flex-1 container mx-auto p-[50px]">
-          <h1 className="text-2xl font-semibold mb-5 flex items-center space-x-2 text-indigo-600">
+        <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+          <h1 className="text-3xl font-bold text-indigo-700 flex items-center gap-2 mb-6">
             <FaUserFriends />
             <span className="py-4">Member</span>
           </h1>
@@ -63,10 +64,10 @@ export default function Member() {
             </Link>
           </div>
 
-          <div className="overflow-hidden rounded-lg border border-gray-800">
-            <table className="min-w-full bg-white">
-              <thead className="bg-gray-300 text-black">
-                <tr className="border-b border-gray-800">
+          <div className="overflow-x-auto border rounded-lg shadow">
+            <table className="min-w-full bg-white text-sm">
+              <thead className="bg-indigo-600 text-white text-left">
+                <tr>
                   <TableHeader name="Action" />
                   <TableHeader name="Name" />
                   <TableHeader name="Email" />
@@ -77,7 +78,7 @@ export default function Member() {
                   users.map((member) => (
                     <tr
                       key={member.id}
-                      className="border-b border-gray-800 hover:bg-gray-100"
+                      className="border-b border-gray-200 hover:bg-gray-50 transition"
                     >
                       <td className="px-7 py-5">
                         <Link to={`/viewmember/${member.id}`}>
@@ -90,7 +91,7 @@ export default function Member() {
                   ))
                 ) : (
                   <tr className="border-b border-gray-800">
-                    <td colSpan="3" className="px-7 py-5 text-center">
+                    <td colSpan="2" className="text-center px-7 py-5 text-gray-500">
                       No user found
                     </td>
                   </tr>
