@@ -2,7 +2,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import { FaQuestionCircle } from "react-icons/fa";
 import Header from "../../components/Header";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 
@@ -20,7 +20,7 @@ export default function ViewQuestion() {
     const fetchQuestionAndSkill = async () => {
       try {
         // Fetch question by ID
-        const questionRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`, {
+        const questionRes = await axios.get(`${process.env.REACT_APP_BASE_URL}api/question/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setQuestion(questionRes.data);
@@ -29,7 +29,7 @@ export default function ViewQuestion() {
         // Fetch related skill
         const skillId = questionRes.data.skill_id;
         if (skillId) {
-          const skillRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${skillId}`, {
+          const skillRes = await axios.get(`${process.env.REACT_APP_BASE_URL}api/skill/${skillId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setSkillName(skillRes.data.skill?.skill_name || "No skill found");
@@ -45,14 +45,14 @@ export default function ViewQuestion() {
     };
 
     fetchQuestionAndSkill();
-  }, [id]);
+  }, );
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this question?");
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}api/question/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Question deleted successfully!");

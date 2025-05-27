@@ -3,7 +3,7 @@ import { FaClipboardList } from "react-icons/fa";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 
 
 
@@ -15,7 +15,7 @@ export default function UpdateSkill() {
   useEffect(() => {
     const fetchSkill = async () => {
       try {
-        const response = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`, {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}api/skill/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         // Adjust based on your API response structure
@@ -31,12 +31,12 @@ export default function UpdateSkill() {
     };
 
     fetchSkill();
-  }, [id]);
+  }, );
 
   const handleUpdate = async () => {
     try {
       const res = await axios.put(
-        `http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`,
+        `${process.env.REACT_APP_BASE_URL}api/skill/${id}`,
         { skill_name: skill },
         { headers: { Authorization: `Bearer ${token}` } }
       );

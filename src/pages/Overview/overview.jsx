@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 import Sidebar from "../../components/Sidebar";
 import TableHeader from "../../components/TableHeader";
 import Header from "../../components/Header";
@@ -20,7 +20,7 @@ export default function Overview() {
       return;
     }
   
-    fetch("http://pse-skill-orientation.final25.psewmad.org/api/student-results", {
+    fetch(`${process.env.REACT_APP_BASE_URL}api/student-results`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -1,3 +1,6 @@
+import React, { useState, useEffect } from 'react';
+
+
 const YearCountPage = ({ year }) => {
   const [studentData, setStudentData] = useState([]);
   const [skillData, setSkillData] = useState([]);
@@ -11,11 +14,11 @@ const YearCountPage = ({ year }) => {
     setLoading(true);
 
     Promise.all([
-      fetch("http://pse-skill-orientation.final25.psewmad.org/api/student/year-count", {
+      fetch(`${process.env.REACT_APP_BASE_URL}api/student/year-count`, {
         headers: { Authorization: `Bearer ${token}` },
       }).then((res) => res.json()),
 
-      fetch("http://pse-skill-orientation.final25.psewmad.org/api/top-skill-year", {
+      fetch(`${process.env.REACT_APP_BASE_URL}api/top-skill-year`, {
         headers: { Authorization: `Bearer ${token}` },
       }).then((res) => res.json()),
     ])

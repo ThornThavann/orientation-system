@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaQuestionCircle } from "react-icons/fa";
@@ -26,7 +26,7 @@ export default function QuestionList() {
 
   useEffect(() => {
     axios
-      .get("http://pse-skill-orientation.final25.psewmad.org/api/question/all", {
+      .get(`${process.env.REACT_APP_BASE_URL}api/question/all`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -49,11 +49,11 @@ export default function QuestionList() {
       .catch((err) => {
         console.error("Failed to fetch questions:", err);
       });
-  }, []);
+  }, );
 
   useEffect(() => {
     axios
-      .get("http://pse-skill-orientation.final25.psewmad.org/api/skill/all", {
+      .get(`${process.env.REACT_APP_BASE_URL}api/skill/all`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -76,7 +76,7 @@ export default function QuestionList() {
       .catch((err) => {
         console.error("Failed to fetch questions:", err);
       });
-  }, []);
+  }, );
 
   
 

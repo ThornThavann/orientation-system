@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar";
 import { FaUserFriends } from "react-icons/fa";
 import Header from "../../components/Header";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 
 
 export default function Viewuser() {
@@ -19,7 +19,7 @@ export default function Viewuser() {
 
     const fetchuser = async () => {
       try {
-        const res = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/user/${id}`, {
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}api/user/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("API response data:", res.data); // Debugging
@@ -33,14 +33,14 @@ export default function Viewuser() {
       }
     };
     fetchuser();
-  }, [id]);
+  }, );
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this user?");
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://pse-skill-orientation.final25.psewmad.org/api/user/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}api/user/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("User deleted successfully!");

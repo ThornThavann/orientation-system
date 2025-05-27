@@ -1,3 +1,7 @@
+
+import React, { useState, useEffect } from 'react';
+
+
 const SchoolCountPage = ({ year }) => {
   const [schoolData, setSchoolData] = useState([]);
   const [filteredSchoolData, setFilteredSchoolData] = useState([]);
@@ -6,7 +10,7 @@ const SchoolCountPage = ({ year }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://pse-skill-orientation.final25.psewmad.org/api/student/school-count", {
+    fetch(`${process.env.REACT_APP_BASE_URL}api/student/school-count`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -65,3 +69,10 @@ const SchoolCountPage = ({ year }) => {
 };
 
 export default SchoolCountPage;
+
+const Card = ({ title, value }) => (
+  <div className="border border-gray-300 p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+    <p className="text-gray-700 font-semibold mb-2">{title}</p>
+    <h2 className="text-2xl font-bold text-green-600">{value}</h2>
+  </div>
+);

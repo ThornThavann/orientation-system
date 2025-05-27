@@ -6,7 +6,7 @@ import TableHeader from "../../components/TableHeader";
 import Header from "../../components/Header";
 import Buttons from "../../components/ButtonAction";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 
 
 export default function Member() {
@@ -18,7 +18,7 @@ export default function Member() {
   useEffect(() => {
     
     axios
-      .get("http://pse-skill-orientation.final25.psewmad.org/api/user/user", {
+      .get(`${process.env.REACT_APP_BASE_URL}api/user/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -32,7 +32,7 @@ export default function Member() {
           setUsers(res.data.user);
         } else {
           console.warn("Unexpected response format:", res.data);
-          setUsers([]);
+          setUsers();
         }
       })
       .catch((err) => {
@@ -42,7 +42,8 @@ export default function Member() {
       .finally(() => {
         setLoading(false);
       });
-  }, []); // Run once on mount
+
+  }, ); 
 
   if (loading) return <div className="text-center mt-10">Loading...</div>;
   if (error) return <div className="text-center mt-10 text-red-500">{error}</div>;

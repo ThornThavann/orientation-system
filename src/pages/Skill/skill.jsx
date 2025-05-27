@@ -6,7 +6,7 @@ import Buttons from "../../components/ButtonAction";
 import TableHeader from "../../components/TableHeader";
 import Header from "../../components/Header";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 
 
 export default function Skill() {
@@ -18,7 +18,7 @@ export default function Skill() {
 
   useEffect(() => {
     axios
-      .get("http://pse-skill-orientation.final25.psewmad.org/api/skill/all", {
+      .get(`${process.env.REACT_APP_BASE_URL}api/skill/all`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ export default function Skill() {
       .finally(() => {
         setLoading(false);
       });
-  }, []); // <-- no extra closing brace here
+  }, ); // <-- no extra closing brace here
 
   return (
     <div className="flex min-h-screen bg-gray-100">

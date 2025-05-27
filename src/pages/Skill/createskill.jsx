@@ -3,7 +3,7 @@ import { FaClipboardList } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState } from 'react';
 
 
 export default function Createskill() {
@@ -11,8 +11,7 @@ export default function Createskill() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token"); // Get token from localStorage
 
-  useEffect(() => {
-  }, []);
+
 
   const handleInputChange = (e) => {
     setSkill(e.target.value);
@@ -25,7 +24,7 @@ export default function Createskill() {
     }
     try {
       await axios.post(
-        "http://pse-skill-orientation.final25.psewmad.org/api/skill/new",
+        `${process.env.REACT_APP_BASE_URL}api/skill/new`,
         { skill_name: skill },
         {
           headers: {

@@ -1,9 +1,9 @@
-// src/pages/ViewSkill.jsx
+
 
 import Sidebar from "../../components/Sidebar";
 import { FaClipboardList } from "react-icons/fa";
 import Header from "../../components/Header";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export default function ViewSkill() {
   useEffect(() => {
     const fetchSkill = async () => {
       try {
-        const res = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`, {
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}api/skill/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -41,7 +41,7 @@ export default function ViewSkill() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}api/skill/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

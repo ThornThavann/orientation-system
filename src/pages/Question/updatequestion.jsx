@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
@@ -18,7 +18,7 @@ export default function UpdateQuestion() {
     const fetchQuestionAndSkills = async () => {
       try {
         // Fetch the question by ID
-        const questionRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`, {
+        const questionRes = await axios.get(`${process.env.REACT_APP_BASE_URL}api/question/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -27,7 +27,7 @@ export default function UpdateQuestion() {
         setSelectedSkillId(questionData.skill_id?.toString() || "");
 
         // Fetch all skills
-        const skillRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/all`, {
+        const skillRes = await axios.get(`${process.env.REACT_APP_BASE_URL}api/skill/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -38,12 +38,12 @@ export default function UpdateQuestion() {
     };
 
     fetchQuestionAndSkills();
-  }, [id]);
+  }, );
 
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`,
+        `${process.env.REACT_APP_BASE_URL}api/question/${id}`,
         {
           question: questionText,
           skill_id: Number(selectedSkillId),

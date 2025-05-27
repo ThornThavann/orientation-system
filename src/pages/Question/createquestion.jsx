@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import Sidebar from "../../components/Sidebar";
 import { FaQuestionCircle } from "react-icons/fa";
 
@@ -14,7 +14,7 @@ export default function CreateQuestion() {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const res = await axios.get("http://pse-skill-orientation.final25.psewmad.org/api/skill/all", {
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}api/skill/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Fetched skills:", res.data);
@@ -25,7 +25,7 @@ export default function CreateQuestion() {
     };
 
     fetchSkills();
-  }, []);
+  }, );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,8 +36,7 @@ export default function CreateQuestion() {
     };
 
     try {
-      const response = await axios.post(
-        "http://pse-skill-orientation.final25.psewmad.org/api/question/new",
+      const response = await axios.post( `${process.env.REACT_APP_BASE_URL}api/question/new`,
         requestBody,
         {
           headers: {

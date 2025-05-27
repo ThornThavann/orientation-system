@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 
@@ -21,7 +21,7 @@ export default function CreateMember() {
     setSuccess("");
 
     try {
-      const response = await fetch("http://pse-skill-orientation.final25.psewmad.org/api/auth/register", {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
