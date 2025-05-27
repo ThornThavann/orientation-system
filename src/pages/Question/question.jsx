@@ -26,7 +26,7 @@ export default function QuestionList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/question/all", {
+      .get("http://pse-skill-orientation.final25.psewmad.org/api/question/all", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,7 +53,7 @@ export default function QuestionList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/skill/all", {
+      .get("http://pse-skill-orientation.final25.psewmad.org/api/skill/all", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

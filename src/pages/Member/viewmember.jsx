@@ -19,7 +19,7 @@ export default function Viewuser() {
 
     const fetchuser = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/user/${id}`, {
+        const res = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/user/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("API response data:", res.data); // Debugging
@@ -40,7 +40,7 @@ export default function Viewuser() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/user/${id}`, {
+      await axios.delete(`http://pse-skill-orientation.final25.psewmad.org/api/user/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("User deleted successfully!");

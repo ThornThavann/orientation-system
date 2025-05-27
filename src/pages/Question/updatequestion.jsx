@@ -18,7 +18,7 @@ export default function UpdateQuestion() {
     const fetchQuestionAndSkills = async () => {
       try {
         // Fetch the question by ID
-        const questionRes = await axios.get(`http://localhost:3000/api/question/${id}`, {
+        const questionRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -27,7 +27,7 @@ export default function UpdateQuestion() {
         setSelectedSkillId(questionData.skill_id?.toString() || "");
 
         // Fetch all skills
-        const skillRes = await axios.get(`http://localhost:3000/api/skill/all`, {
+        const skillRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -43,7 +43,7 @@ export default function UpdateQuestion() {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/question/${id}`,
+        `http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`,
         {
           question: questionText,
           skill_id: Number(selectedSkillId),

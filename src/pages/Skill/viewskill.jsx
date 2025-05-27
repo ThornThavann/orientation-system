@@ -19,7 +19,7 @@ export default function ViewSkill() {
   useEffect(() => {
     const fetchSkill = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/skill/${id}`, {
+        const res = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -41,7 +41,7 @@ export default function ViewSkill() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/skill/${id}`, {
+      await axios.delete(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

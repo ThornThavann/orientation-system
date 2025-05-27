@@ -18,7 +18,7 @@ export default function Member() {
   useEffect(() => {
     
     axios
-      .get("http://localhost:3000/api/user/user", {
+      .get("http://pse-skill-orientation.final25.psewmad.org/api/user/user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

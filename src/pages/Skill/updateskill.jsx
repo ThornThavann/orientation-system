@@ -15,7 +15,7 @@ export default function UpdateSkill() {
   useEffect(() => {
     const fetchSkill = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/skill/${id}`, {
+        const response = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         // Adjust based on your API response structure
@@ -36,7 +36,7 @@ export default function UpdateSkill() {
   const handleUpdate = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:3000/api/skill/${id}`,
+        `http://pse-skill-orientation.final25.psewmad.org/api/skill/${id}`,
         { skill_name: skill },
         { headers: { Authorization: `Bearer ${token}` } }
       );

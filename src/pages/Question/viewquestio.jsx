@@ -20,7 +20,7 @@ export default function ViewQuestion() {
     const fetchQuestionAndSkill = async () => {
       try {
         // Fetch question by ID
-        const questionRes = await axios.get(`http://localhost:3000/api/question/${id}`, {
+        const questionRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setQuestion(questionRes.data);
@@ -29,7 +29,7 @@ export default function ViewQuestion() {
         // Fetch related skill
         const skillId = questionRes.data.skill_id;
         if (skillId) {
-          const skillRes = await axios.get(`http://localhost:3000/api/skill/${skillId}`, {
+          const skillRes = await axios.get(`http://pse-skill-orientation.final25.psewmad.org/api/skill/${skillId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setSkillName(skillRes.data.skill?.skill_name || "No skill found");
@@ -52,7 +52,7 @@ export default function ViewQuestion() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/question/${id}`, {
+      await axios.delete(`http://pse-skill-orientation.final25.psewmad.org/api/question/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Question deleted successfully!");

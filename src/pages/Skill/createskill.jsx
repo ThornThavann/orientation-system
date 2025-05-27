@@ -25,7 +25,7 @@ export default function Createskill() {
     }
     try {
       await axios.post(
-        "http://localhost:3000/api/skill/new",
+        "http://pse-skill-orientation.final25.psewmad.org/api/skill/new",
         { skill_name: skill },
         {
           headers: {
@@ -35,7 +35,7 @@ export default function Createskill() {
         }
       );
       alert("Skill create successfully!");
-      navigate("/skill"); // Redirect back to skill list page after save
+      navigate("/createskill"); // Redirect back to skill list page after save
     } catch (error) {
       console.error("Error saving skill:", error);
       alert("Failed to save skill.");

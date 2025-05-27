@@ -1,4 +1,3 @@
-// index.js
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
@@ -17,27 +16,119 @@ import ViewSkill from "./pages/Skill/viewskill.jsx";
 import UpdateSkill from "./pages/Skill/updateskill.jsx";
 import CreateSkill from "./pages/Skill/createskill.jsx";
 import Login from "./pages/Auth/login.jsx";
+
+import ProtectedRoute from "./pages/Auth/ProtectedRoute.jsx"; // 👈 Import
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/overview/" element={<Overview />} />
-      <Route path="/question" element={<Question />} />
-      <Route path="/viewquestion/:id" element={<ViewQuestion />} />
-      <Route path="/createquestion" element={<CreateQuestion />} />
-      <Route path="/updatequestion/:id" element={<UpdateQuestion />} />
-      <Route path="/skill" element={<Skill />} />
-      <Route path="/viewskill/:id" element={<ViewSkill />} />
-      <Route path="/updateskill/:id" element={<UpdateSkill />} />
-      <Route path="/createskill" element={<CreateSkill />} />
-      <Route path="/member" element={<Member />} />
-      <Route path="/createmember" element={<CreateMember />} />
-      <Route path="/member" element={<Member />} />
-      <Route path="/viewmember/:id" element={<ViewMember />} />
-      {/* <Route path="/viewoverview" element={<ViewOverview />} /> */}
-      {/* <Route path="/createstudent" element={<CreateStudent />} /> */}
 
+      {/* Protected Routes */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/overview"
+        element={
+          <ProtectedRoute>
+            <Overview />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/question"
+        element={
+          <ProtectedRoute>
+            <Question />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/viewquestion/:id"
+        element={
+          <ProtectedRoute>
+            <ViewQuestion />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/createquestion"
+        element={
+          <ProtectedRoute>
+            <CreateQuestion />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/updatequestion/:id"
+        element={
+          <ProtectedRoute>
+            <UpdateQuestion />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/skill"
+        element={
+          <ProtectedRoute>
+            <Skill />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/viewskill/:id"
+        element={
+          <ProtectedRoute>
+            <ViewSkill />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/updateskill/:id"
+        element={
+          <ProtectedRoute>
+            <UpdateSkill />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/createskill"
+        element={
+          <ProtectedRoute>
+            <CreateSkill />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/member"
+        element={
+          <ProtectedRoute>
+            <Member />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/createmember"
+        element={
+          <ProtectedRoute>
+            <CreateMember />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/viewmember/:id"
+        element={
+          <ProtectedRoute>
+            <ViewMember />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   </BrowserRouter>
 );

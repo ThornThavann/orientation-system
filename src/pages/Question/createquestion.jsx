@@ -14,7 +14,7 @@ export default function CreateQuestion() {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/skill/all", {
+        const res = await axios.get("http://pse-skill-orientation.final25.psewmad.org/api/skill/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Fetched skills:", res.data);
@@ -37,7 +37,7 @@ export default function CreateQuestion() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/question/new",
+        "http://pse-skill-orientation.final25.psewmad.org/api/question/new",
         requestBody,
         {
           headers: {

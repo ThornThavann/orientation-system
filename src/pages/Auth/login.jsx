@@ -53,7 +53,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/auth/login', {
+      const response = await fetch('http://pse-skill-orientation.final25.psewmad.org/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

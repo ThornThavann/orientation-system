@@ -21,7 +21,7 @@ export default function CreateMember() {
     setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch("http://pse-skill-orientation.final25.psewmad.org/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

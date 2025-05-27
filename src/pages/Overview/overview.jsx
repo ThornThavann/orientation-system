@@ -20,7 +20,7 @@ export default function Overview() {
       return;
     }
   
-    fetch("http://localhost:3000/api/student-results", {
+    fetch("http://pse-skill-orientation.final25.psewmad.org/api/student-results", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
