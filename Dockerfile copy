@@ -1,5 +1,5 @@
 # Use the official lightweight Node.js image
-FROM node:18
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -13,12 +13,6 @@ RUN npm install
 # Copy the rest of the app's code
 COPY . .
 
-# Accept build argument for React
-ARG REACT_APP_BASE_URL
-
-# Set environment variable so React can use it during build
-ENV REACT_APP_BASE_URL=$REACT_APP_BASE_URL
-
 # Build the React app
 RUN npm run build
 
@@ -30,9 +24,3 @@ CMD ["serve", "-s", "build", "-l", "3000"]
 
 # Expose the port the app runs on
 EXPOSE 3000
-
-
-
-
-
-
