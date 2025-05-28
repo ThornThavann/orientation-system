@@ -1,5 +1,5 @@
 # Use the official lightweight Node.js image
-FROM node:18-alpine
+FROM node:18
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -24,3 +24,7 @@ CMD ["serve", "-s", "build", "-l", "3000"]
 
 # Expose the port the app runs on
 EXPOSE 3000
+
+
+
+
