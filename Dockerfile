@@ -1,24 +1,26 @@
-# Use node image
+# Use the official lightweight Node.js image
 FROM node:18-alpine
 
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy package files
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy app source code
+# Copy the rest of the app's code
 COPY . .
 
-# Build production React app
+# Build the React app
 RUN npm run build
 
-# Expose the port you want (3304)
-EXPOSE 3000
+# Use a lightweight web server to serve the production build
+RUN npm install -g serve
 
-# Serve the app on port 3304
-# CMD ["serve", "-s", "build", "-l", "3000"]
-CMD [ "npm", "start" ]
+# Command to run when the container starts
+CMD ["serve", "-s", "build", "-l", "3000"]
+
+# Expose the port the app runs on
+EXPOSE 3000
