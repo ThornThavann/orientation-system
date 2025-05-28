@@ -59,7 +59,7 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.text();
+      const data = await response.json();
 
       if (response.ok) {
         localStorage.setItem('token', data.token);
