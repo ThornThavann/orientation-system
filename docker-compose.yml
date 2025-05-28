@@ -6,6 +6,6 @@ services:
     ports:
       - "127.0.0.1:3304:3000"
     environment:
-      - REACT_APP_BASE_URL=${REACT_APP_BASE_URL}
+      - REACT_APP_BASE_URL=http://pse-skill-orientation-be.final25.psewmad.org/
     container_name: borientation-system-app-1
     restart: always
