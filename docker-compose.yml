@@ -9,8 +9,3 @@ services:
       - REACT_APP_BASE_URL=${REACT_APP_BASE_URL}
     container_name: borientation-system-app-1
     restart: always
-networks:
-  default:
-    ipam:
-      config:
-        - subnet: 172.30.0.0/16
